@@ -1,0 +1,74 @@
+ALABAMA TUNNEL — KANAL KURULUMU
+================================
+
+Takim: Alabama Crimson Tide (NCAA) | Stadyum: Bryant-Denny Stadium
+Renk: Alabama kirmizisi (crimson) + gri
+Kadro 2026 sezonuna gore: QB Keelon Russell, Rico Scott, Lotzeir Brooks,
+Ryan Coleman-Williams, Zabien Brown, Bray Hubbard, koc Kalen DeBoer.
+
+Sistem NFL kanallariyla BIREBIR ayni — sadece takim ve renk farkli.
+ElevenLabs adimi yok, kuyruk sadece SES dosyasi kabul ediyor; yanlislikla
+birakilan bir .txt sessizce yok sayilir.
+
+
+DOSYALARI YERLESTIR
+-------------------
+Zip'in icindekilerin hepsini (OKU.txt haric) klonladigin klasore KOPYALA.
+Ctrl+A -> Ctrl+C -> klasorde Ctrl+V.   Ctrl+X KULLANMA.
+
+Klasorde su yapi olmali:
+  .git  .github  assets  content  scripts  .gitignore  channel.json
+
+README ya da .gitattributes goruyorsan yanlis kaynaktan kopyalamissin.
+
+GitHub Desktop -> Current repository DOGRU DEPO MU, kontrol et
+-> Commit to main -> Push origin
+
+Depoyu acarken "Add a README file" kutusunu isaretlediysen push
+"unrelated histories" hatasi verir. Cozumu:
+  Repository -> Open in Command Prompt -> git push --force origin main
+
+
+IZIN (sart)
+-----------
+Settings -> Actions -> General -> en altta "Workflow permissions"
+"Read and write permissions" sec -> Save
+
+Bu olmadan video render edilir ama Release'e yuklenemez.
+API anahtarina gerek yok, sesi kendi programin uretiyor.
+
+
+STOK VIDEO HAVUZU
+-----------------
+Releases -> Create a new release
+  Tag: broll    Title: broll
+  Alabama stok videolarini surukle -> "Publish release"
+  ("Save draft" e BASMA)
+
+Havuz buyurse: GitHub bir release'e en fazla 1000 dosya aliyor. broll2,
+broll3... diye yeni release'ler acabilirsin, sistem broll ile baslayan
+numarali etiketlerin hepsini indirir.
+
+Istege bagli: music, ambient, photos.
+
+
+ILK VIDEO
+---------
+Ses otomasyonunun kanal listesine bu depoyu ekle. Metni atinca program sesi
+uretip content/queue icine yazacak ve push edecek; render kendiliginden
+baslar.
+
+Elle: mp3'u content/queue icine at, dosya adi videonun basligi olsun,
+commit + push.
+
+Render kaydinda:
+  [assemble] b-roll: 24 clips (offset 3)
+  [assemble] kurgu karisimi: 34 stok video / ... (stok %100)
+
+"b-roll: 0 clips" -> broll release'i taslakta kalmis demektir.
+
+
+AYNI VIDEOYU TEKRAR RENDER ETMEK
+--------------------------------
+Adina karsilik gelen Release varsa video ikinci kez kurulmaz ("zaten var").
+O Release'i sil, sonra Actions -> render-queue -> Run workflow.
